@@ -18,8 +18,8 @@ void set_empty_seqlist(seqlist_t *L);
 int get_length_seqlist(seqlist_t *L);
 void show_seqlist(seqlist_t *L);
 
-int insert_seqlist(seqlist *L,data_t x,int pos);
-int delete_seqlist(seqlist *L,int pos);
-int change_seqlist(seqlist *L,data_t x,int pos);
-int search_seqlist(seqlist *L,data_t x);
+int insert_seqlist(seqlist_t *L,data_t x,int pos);
+int delete_seqlist(seqlist_t *L,int pos);
+int change_seqlist(seqlist_t *L,data_t x,int pos);
+int search_seqlist(seqlist_t *L,data_t x);
 #endif
