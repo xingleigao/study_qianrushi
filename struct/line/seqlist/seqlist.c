@@ -44,13 +44,13 @@ int get_length_seqlist(seqlist_t *L);
 void show_seqlist(seqlist_t *L)
 {
 	int i = 0;
-	if(L = NULL)
+	if(L == NULL)
 	{
 		puts("seqlist_t *L is NULL");
 		return;
 	}
 	for(i = 0; i <= L->last;i++)
-		printf("L->data[%d] = %d\n",L,L->data[i]);
+		printf("L->data[%d] = %d\n",i,L->data[i]);
 	return;
 }
 
