@@ -26,7 +26,12 @@ void clear_seqlist(seqlist_t *L)
 
 int is_empty_seqlist(seqlist_t *L)
 {
-
+	if(L == NULL)
+	{
+		puts("seqlist_t *L is NULL");
+		return;
+	}
+	return ( L->last == -1);
 }
 
 int is_full_seqlist(seqlist_t *L)
@@ -39,8 +44,25 @@ int is_full_seqlist(seqlist_t *L)
 	return (L->last == MAXSIZE - 1);
 }
 
-void set_empty_seqlist(seqlist_t *L);
-int get_length_seqlist(seqlist_t *L);
+void set_empty_seqlist(seqlist_t *L)
+{
+	if(L == NULL)
+	{
+		puts("seqlist_t *L is NULL");
+		return;
+	}
+	L->last = -1;
+	return ;
+}
+int get_length_seqlist(seqlist_t *L)
+{
+	if(L == NULL)
+	{
+		puts("selqist_t *L is NULL");
+		return -1;
+	}
+	return (L->last+1);
+}
 void show_seqlist(seqlist_t *L)
 {
 	int i = 0;
@@ -68,6 +90,36 @@ int insert_seqlist(seqlist_t *L,data_t x,int pos)
 	L->last++;
 	return 0;
 }
-int delete_seqlist(seqlist_t *L,int pos);
-int change_seqlist(seqlist_t *L,data_t x,int pos);
-int search_seqlist(seqlist_t *L,data_t x);
+int delete_seqlist(seqlist_t *L,int pos)
+{
+	int i = 0;
+	if((pos<0)||(pos>L->last))
+	{
+		puts("input pos is invalid");
+		return -1;
+	}
+	for(i = pos; i <= get_length_seqlist(L);i ++)
+		L -> data[i] = L -> data[i+1];
+	L -> last--;
+	return 0;
+}
+int change_seqlist(seqlist_t *L,data_t x,int pos)
+{
+	if((pos<0)||(pos>L->last))
+	{
+		puts("input pos is invalid");
+		return -1;
+	}
+	L->data[pos] = x;
+	return 0;
+}
+int search_seqlist(seqlist_t *L,data_t x)
+{
+	int i = 0;
+	for(i = 0; i <= L->last; i++)
+	{
+		if(L->data[i] == x)
+			return i;
+	}
+	return -1;
+}
