@@ -14,7 +14,9 @@ typedef struct node{
 extern linklist list_create();
 extern linklist list_create2();
 extern int list_head_insert(linklist H,datatype value);
-extern linklist list_get(linklist H,int pos);
+extern linklist list_get(linklist H, int pos);
+extern linklist list_locate(linklist H, datatype value);
 extern void list_show(linklist H);
 
 #endif
+  

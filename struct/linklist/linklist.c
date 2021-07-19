@@ -74,6 +74,16 @@ linklist list_get(linklist H,int pos){
 	}
 }
 
+linklist list_locate(linklist H, datatype value){
+	linklist p = H->next;
+
+	while(p&&p->data != value){
+		p = p->next;
+	}
+	
+	return p;
+}
+
 int list_head_insert(linklist H,datatype value){
 	linklist p;
 	if((p = (linklist)malloc(sizeof(listnode))) == NULL)
@@ -86,4 +96,5 @@ int list_head_insert(linklist H,datatype value){
 	H->next = p;
 	return 0;
 }
+
 
