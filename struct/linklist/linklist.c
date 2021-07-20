@@ -97,3 +97,4 @@ int list_head_insert(linklist H,datatype value){
 	return 0;
 }
 
+

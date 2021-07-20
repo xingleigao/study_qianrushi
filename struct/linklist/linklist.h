@@ -19,4 +19,3 @@ extern linklist list_locate(linklist H, datatype value);
 extern void list_show(linklist H);
 
 #endif
-  
