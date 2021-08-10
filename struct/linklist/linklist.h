@@ -14,8 +14,13 @@ typedef struct node{
 extern linklist list_create();
 extern linklist list_create2();
 extern int list_head_insert(linklist H,datatype value);
+extern int list_insert(linklist H, int pos, datatype value);
+extern int list_order_insert(linklist H, datatype value);
+extern int list_delete(linklist H, int pos);
 extern linklist list_get(linklist H, int pos);
 extern linklist list_locate(linklist H, datatype value);
+extern void list_reverse(linklist H);
+extern void list_sort(linklist H);
 extern void list_show(linklist H);
 
 #endif

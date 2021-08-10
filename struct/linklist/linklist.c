@@ -45,6 +45,42 @@ linklist list_create2(){
 	return H;
 }
 
+int list_order_insert(linklist H, datatype value){
+	linklist p, q;
+	
+	if((p = (linklist)malloc(sizeof(linklist))) == NULL){
+		printf("malloc failed");
+		return -1;
+	}
+	p->data = value;
+	q = H;
+	while(q->next && q->next->data < value){
+		q = q->next;
+	}
+		p->next = q->next;
+		q->next =p;
+	return 0;
+}
+
+void list_sort(linklist H) {
+	linklist p, q, r;
+
+	p = H->next;
+	H->next = NULL;
+
+	while (p) {
+		q = p;
+		p = p->next;
+
+		r = H;
+		while(r->next && r->next->data < q->data){
+			r = r->next;
+		}
+		q->next = r->next;
+		r->next = q;
+	}
+	
+}
 void list_show(linklist H)
 {
 	while(H->next){
@@ -97,4 +133,60 @@ int list_head_insert(linklist H,datatype value){
 	return 0;
 }
 
+int list_insert(linklist H, int pos, datatype value){
+	linklist p ,q ;
+	if ( pos == 0) {
+		p = H;
+	}
+	else {
+		p =list_get(H,pos-1);
+	}
+	if (p ==NULL){
+		printf("para is invalid\n");
+	}
+	else {
+		if ((q = (linklist)malloc(sizeof(listnode))) == NULL){
+			printf("malloc failed\n");
+			return -1;
+		}
+	}
+	q->data = value;
+	q->next = p->next;
+	p->next = q;
+	return 0;
+}
 
+int list_delete(linklist H, int pos){
+	linklist p,q;
+	if (pos == 0) {
+		p= H;
+	}
+	else {
+		p = list_get(H, pos-1);
+	}
+	if (p == NULL ||p->next == NULL) {
+		printf("para is invalid\n");
+		return -1;
+	}
+	else {
+		q = p->next;
+		p->next = q->next;
+		free(q);
+		q = NULL;
+		return 0;
+	}
+}
+
+void list_reverse(linklist H){
+	linklist p, q;
+
+	p = H->next;
+	H->next = NULL;
+	while(p){
+		q = p;
+		p = p->next;
+
+		q->next = H->next;
+		H->next = q;
+	}
+}
